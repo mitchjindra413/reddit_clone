@@ -23,16 +23,16 @@ class PostsController < ApplicationController
     end
 
     def edit
-        @sub = Post.find_by(id: params[:id])
+        @post = Post.find_by(id: params[:id])
         render :edit
     end
 
     def update
-        @sub = Post.find_by(id: params[:id])
-        if @sub && @sub.update(sub_params)
-            redirect_to sub_url(@sub.id)
+        @post = Post.find_by(id: params[:id])
+        if @post && @post.update(post_params)
+            redirect_to sub_url(@post.id)
         else
-            flash.now[:errors] = @sub.errors.full_messages
+            flash.now[:errors] = @post.errors.full_messages
             render :edit
         end
     end
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     end
 
     private
-    def sub_params
+    def post_params
         params.require(:post).permit(:title, :url, :content, :sub_id, :author_id)
     end
 end

@@ -91,3 +91,88 @@ FOREIGN KEY ("author_id")
   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/session/new" for ::1 at 2022-09-23 16:14:51 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 0.2ms | Allocations: 12319)
+
+
+
+ActionView::MissingTemplate - Missing template sessions/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+Searched in:
+  * "/Users/mitchelljindra/Desktop/W7D5/reddit_clone/app/views"
+  * "/Users/mitchelljindra/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/actiontext-7.0.4/app/views"
+  * "/Users/mitchelljindra/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/actionmailbox-7.0.4/app/views"
+Did you mean?  rails/conductor/action_mailbox/inbound_emails/new
+               rails/conductor/action_mailbox/inbound_emails/sources/new
+               rails/conductor/action_mailbox/inbound_emails/show
+               rails/conductor/action_mailbox/inbound_emails/index
+               layouts/rails/conductor
+               layouts/application:
+  app/controllers/sessions_controller.rb:7:in `new'
+
+Started POST "/__better_errors/4ea2045a6fc4b5a1/variables" for ::1 at 2022-09-23 16:14:51 -0700
+Started GET "/session/new" for ::1 at 2022-09-23 16:17:31 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1055)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 755.6ms | Allocations: 94818)
+Completed 200 OK in 778ms (Views: 776.8ms | ActiveRecord: 0.1ms | Allocations: 112877)
+
+
+Started GET "/session/new" for ::1 at 2022-09-23 16:19:12 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 683)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4126)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.1ms | Allocations: 4955)
+
+
+Started POST "/session" for ::1 at 2022-09-23 16:22:13 -0700
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"mitch", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.0ms | Allocations: 5226)
+
+
+
+NoMethodError - undefined method `find_by_usernmae' for User:Class
+Did you mean?  find_by_sql:
+  app/models/user.rb:27:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:11:in `create'
+
+Started POST "/__better_errors/59fae9ee87384b63/variables" for ::1 at 2022-09-23 16:22:13 -0700
+Started GET "/session/new" for ::1 at 2022-09-23 16:22:44 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 672)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 15730)
+Completed 200 OK in 13ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 20170)
+
+
+Started POST "/session" for ::1 at 2022-09-23 16:22:50 -0700
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"mitchell", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mitchell"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 3815)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 3895)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.0ms | Allocations: 6482)
+
+
+
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/sessions/new.html.erb:5
+  app/controllers/sessions_controller.rb:17:in `create'
+
+Started POST "/__better_errors/a5970a49d403df52/variables" for ::1 at 2022-09-23 16:22:50 -0700
