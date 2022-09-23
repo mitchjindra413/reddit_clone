@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
     before_action :require_login, only: [:destroy]
     
     def new
@@ -13,7 +12,9 @@ class SessionsController < ApplicationController
             login!(@user)
             redirect_to subs_url
         else
+            @user = User.new(username: params[:user][:username],password: params[:user][:password])
             flash.now[:errors] = ['Invalid username or password']
+            debugger
             render :new
         end
     end
