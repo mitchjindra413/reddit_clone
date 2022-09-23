@@ -17,6 +17,10 @@ class User < ApplicationRecord
 
     validates :password, length: {minimum:8 }, allow_nil:true
 
+    has_many :subs, foreign_key: :moderator_id, class_name: :Sub, inverse_of: :moderator
+
+    has_many :posts, foreign_key: :author_id, class_name: :Post
+
     attr_reader :password
 
     def self.find_by_credentials(username, password)
